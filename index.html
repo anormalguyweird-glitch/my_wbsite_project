@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-yEPZ7jP9S0QKiUQ0m3jjsO4ProIW7wvR9gXkI7JOGa2XVsw53Yke2bsdkBbjmmiX" crossorigin="anonymous">
+    <title>David | Personal Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
 </head>
 
 <body>
@@ -26,7 +27,10 @@
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
+                                <a class="nav-link" href="#about">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#projects">Projects</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -54,14 +58,39 @@
                 </div>
             </nav>
         </div>
-        <div class="section2" id="sections">
-            <div class="container text-center">
-                <div class="row align-items-start" id="card-row"></div>
+        <section class="section2 container py-5" id="about">
+            <div class="row align-items-center g-4 mb-4">
+                <div class="col-md-auto">
+                    <img src="https://picsum.photos/id/64/240/240" width="160" height="160"
+                        class="rounded-circle object-fit-cover" alt="Placeholder profile photo">
+                </div>
+                <div class="col">
+                    <h1>Hi, I'm David.</h1>
+                    <p class="mb-0">I like learning JavaScript by making things I can see and interact with.
+                        I experiment with p5.js animations, try out web APIs, and build pages like this one.</p>
+                </div>
             </div>
-        </div>
-        <div class="section3" id="sections">
-
-        </div>
+            <div class="swiper rounded overflow-hidden" id="photo-slider" aria-label="Photo gallery">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="https://picsum.photos/id/10/1200/500" class="d-block w-100" alt="Wooded lakeshore">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://picsum.photos/id/29/1200/500" class="d-block w-100" alt="Mountain landscape">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="https://picsum.photos/id/16/1200/500" class="d-block w-100" alt="Rocky coastline">
+                    </div>
+                </div>
+                <div class="swiper-button-prev text-white"></div>
+                <div class="swiper-button-next text-white"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+        <section class="section3 container pb-5" id="projects">
+            <h2 class="mb-3">Things I make</h2>
+            <div class="row g-3" id="card-row"></div>
+        </section>
         <div class="section4" id="sections">
 
         </div>
@@ -72,6 +101,7 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script src="data/cards.js"></script>
     <script>
         const cardRow = document.getElementById('card-row');
@@ -80,23 +110,34 @@
             const card = cards[i];
 
             cardRow.insertAdjacentHTML('beforeend', `
-                <div class="col-4">
-                    <div class="card">
+                <div class="col-12 col-md-4">
+                    <div class="card h-100">
                         <img src="${card.imageURL}" class="card-img-top" alt="">
                         <div class="card-body">
                             <h5 class="card-title">${card.title}</h5>
                             <p class="card-text">${card.description}</p>
-                            <a href="${card.linkURL}" class="btn btn-primary">${card.linkText}</a>
                         </div>
                     </div>
                 </div>
             `);
         }
+
+        new Swiper('#photo-slider', {
+            loop: true,
+            keyboard: { enabled: true },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev'
+            }
+        });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-WyOxWvTyr1QaMPfiPJSv76iReVthorl5uWlFtZPyK0IEB0hGzo9y5Bp9mYanr8Bu"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-</body>
 </body>
 
 </html>
