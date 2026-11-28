@@ -1,143 +1,855 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>David | Personal Website</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <style>
+        body {
+            background-color: #121212;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        .swiper-slide {
+            height: 450px;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 40px 50px;
+            color: white;
+            background: linear-gradient(transparent, #000000dd);
+        }
+
+        .swiper {
+            --swiper-theme-color: white;
+        }
+
+        #section-projects {
+            background-color: #181818;
+        }
+
+        .card {
+            background-color: #212529;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px #00000050;
+        }
+
+        .card-img-top {
+            height: 220px;
+            object-fit: cover;
+        }
+
+        #github-row .card-img-top {
+            object-fit: contain;
+            background-color: #0d1117;
+        }
+
+        @media (max-width: 768px) {
+            .swiper-slide {
+                height: 320px;
+            }
+
+            .slide-caption {
+                padding: 30px 40px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .card {
+                transition: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div class="wrapper">
-        <div class="section1" id="sections">
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">David</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary border-bottom sticky-top">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="#">David.</a>
+
+            <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarContent"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarContent">
+
+                <ul class="navbar-nav ms-auto me-3">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section-about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section-projects">Projects</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#section-github">GitHub</a>
+                    </li>
+
+                </ul>
+
+                <form class="d-flex" id="search-form">
+
+                    <input class="form-control me-2"
+                        type="search"
+                        id="search-input"
+                        placeholder="Search projects"
+                        aria-label="Search projects">
+
+                    <button class="btn btn-outline-light" type="submit">
+                        Search
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#about">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#projects">Projects</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
-        </div>
-        <section class="section2 container py-5" id="about">
-            <div class="row align-items-center g-4 mb-4">
-                <div class="col-md-auto">
-                    <img src="https://picsum.photos/id/64/240/240" width="160" height="160"
-                        class="rounded-circle object-fit-cover" alt="Placeholder profile photo">
-                </div>
-                <div class="col">
-                    <h1>Hi, I'm David.</h1>
-                    <p class="mb-0">I like learning JavaScript by making things I can see and interact with.
-                        I experiment with p5.js animations, try out web APIs, and build pages like this one.</p>
-                </div>
+
+                </form>
+
             </div>
-            <div class="swiper rounded overflow-hidden" id="photo-slider" aria-label="Photo gallery">
+        </div>
+    </nav>
+
+
+    <section id="section-slider" class="py-4">
+        <div class="container">
+
+            <div class="swiper rounded-3 overflow-hidden" id="photo-slider">
+
                 <div class="swiper-wrapper">
+
                     <div class="swiper-slide">
-                        <img src="https://picsum.photos/id/10/1200/500" class="d-block w-100" alt="Wooded lakeshore">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://picsum.photos/id/29/1200/500" class="d-block w-100" alt="Mountain landscape">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="https://picsum.photos/id/16/1200/500" class="d-block w-100" alt="Rocky coastline">
-                    </div>
-                </div>
-                <div class="swiper-button-prev text-white"></div>
-                <div class="swiper-button-next text-white"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </section>
-        <section class="section3 container pb-5" id="projects">
-            <h2 class="mb-3">Things I make</h2>
-            <div class="row g-3" id="card-row"></div>
-        </section>
-        <div class="section4" id="sections">
 
-        </div>
-        <div class="section5" id="sections">
+                        <img src="https://picsum.photos/id/20/1200/500"
+                            alt="Workspace">
 
-        </div>
-        <div class="section6" id="sections">
+                        <div class="slide-caption">
 
-        </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script src="data/cards.js"></script>
-    <script>
-        const cardRow = document.getElementById('card-row');
+                            <h2 class="fw-bold">Welcome to my website</h2>
 
-        for (let i = 0; i < cards.length; i++) {
-            const card = cards[i];
+                            <p>Exploring technology, programming and design.</p>
 
-            cardRow.insertAdjacentHTML('beforeend', `
-                <div class="col-12 col-md-4">
-                    <div class="card h-100">
-                        <img src="${card.imageURL}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title">${card.title}</h5>
-                            <p class="card-text">${card.description}</p>
+                            <a href="#section-about" class="btn btn-light">
+                                About Me
+                            </a>
+
                         </div>
                     </div>
+
+
+                    <div class="swiper-slide">
+
+                        <img src="https://picsum.photos/id/180/1200/500"
+                            alt="Technology">
+
+                        <div class="slide-caption">
+
+                            <h2 class="fw-bold">My Coding Projects</h2>
+
+                            <p>A collection of things I make and experiment with.</p>
+
+                            <a href="#section-projects" class="btn btn-light">
+                                View Projects
+                            </a>
+
+                        </div>
+                    </div>
+
+
+                    <div class="swiper-slide">
+
+                        <img src="https://picsum.photos/id/29/1200/500"
+                            alt="Mountain landscape">
+
+                        <div class="slide-caption">
+
+                            <h2 class="fw-bold">Explore My GitHub</h2>
+
+                            <p>Discover my repositories and coding experiments.</p>
+
+                            <a href="#section-github" class="btn btn-light">
+                                <i class="bi bi-github me-2"></i>
+                                GitHub Projects
+                            </a>
+
+                        </div>
+                    </div>
+
                 </div>
-            `);
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination"></div>
+
+                <button id="slider-toggle"
+                    class="btn btn-sm btn-dark position-absolute top-0 end-0 m-3"
+                    style="z-index: 10;">
+                    Pause
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="section-about" class="py-5">
+        <div class="container">
+
+            <div class="row align-items-center g-4">
+
+                <div class="col-12 col-md-auto text-center">
+
+                    <img src="https://github.com/anormalguyweird-glitch.png"
+                        width="160"
+                        height="160"
+                        class="rounded-circle object-fit-cover border border-secondary"
+                        alt="GitHub profile picture">
+
+                </div>
+
+                <div class="col">
+
+                    <h1 class="fw-bold">Hi, I'm David.</h1>
+
+                    <p class="text-secondary">
+                        I'm a student interested in programming and technology.
+                        I enjoy making websites, experimenting with JavaScript,
+                        working with APIs and developing games.
+                        This website is where I share my projects and what I learn.
+                    </p>
+
+                    <div class="mb-3">
+
+                        <span class="badge text-bg-dark border">HTML</span>
+                        <span class="badge text-bg-dark border">CSS</span>
+                        <span class="badge text-bg-dark border">JavaScript</span>
+                        <span class="badge text-bg-dark border">Bootstrap</span>
+                        <span class="badge text-bg-dark border">p5.js</span>
+                        <span class="badge text-bg-dark border">Java</span>
+                        <span class="badge text-bg-dark border">Arduino</span>
+                        <span class="badge text-bg-dark border">Godot</span>
+
+                    </div>
+
+                    <a href="https://github.com/anormalguyweird-glitch"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-outline-light">
+
+                        <i class="bi bi-github me-2"></i>
+                        My GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="section-projects" class="py-5">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <div>
+
+                    <h2 class="fw-bold">My Projects</h2>
+
+                    <p class="text-secondary mb-0">
+                        Some of the things I make and experiment with.
+                    </p>
+
+                </div>
+
+                <span class="text-secondary" id="project-count"></span>
+
+            </div>
+
+            <div class="row g-4" id="card-row"></div>
+
+        </div>
+    </section>
+
+
+    <section id="section-github" class="py-5">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+                <div>
+
+                    <h2 class="fw-bold">
+                        <i class="bi bi-github me-2"></i>
+                        GitHub Projects
+                    </h2>
+
+                    <p class="text-secondary">
+                        My public repositories and coding experiments.
+                    </p>
+
+                </div>
+
+                <a href="https://github.com/anormalguyweird-glitch"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn btn-outline-light">
+
+                    View GitHub
+                    <i class="bi bi-arrow-up-right ms-2"></i>
+
+                </a>
+
+            </div>
+
+
+            <div class="row g-3 mb-4">
+
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 text-center">
+
+                        <i class="bi bi-folder fs-3"></i>
+                        <h2 class="fw-bold mt-2" id="repo-count">-</h2>
+                        <p class="text-secondary mb-0">Repositories</p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 text-center">
+
+                        <i class="bi bi-star fs-3"></i>
+                        <h2 class="fw-bold mt-2" id="star-count">-</h2>
+                        <p class="text-secondary mb-0">GitHub Stars</p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card h-100 p-4 text-center">
+
+                        <i class="bi bi-code-slash fs-3"></i>
+                        <h2 class="fw-bold mt-2" id="language-count">-</h2>
+                        <p class="text-secondary mb-0">Primary Languages</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="mb-4">
+
+                <h5>Programming Languages</h5>
+
+                <div id="github-languages"></div>
+
+            </div>
+
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
+
+                <h4 class="mb-0">Repositories</h4>
+
+                <div class="d-flex gap-2">
+
+                    <select class="form-select" id="language-filter">
+                        <option value="all">All Languages</option>
+                    </select>
+
+                    <select class="form-select" id="github-sort">
+                        <option value="updated">Recently Updated</option>
+                        <option value="stars">Most Stars</option>
+                        <option value="name">Name</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="row g-4" id="github-row">
+
+                <div class="col-12 text-center py-5">
+                    <div class="spinner-border"></div>
+                    <p class="text-secondary mt-3">
+                        Loading GitHub repositories...
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer class="bg-body-tertiary border-top py-4">
+
+        <div class="container d-flex justify-content-between flex-wrap gap-3">
+
+            <span class="text-secondary">
+                &copy; 2026 David. Personal Website.
+            </span>
+
+            <div>
+
+                <a href="#" class="text-secondary text-decoration-none me-3">
+                    Home
+                </a>
+
+                <a href="#section-about" class="text-secondary text-decoration-none me-3">
+                    About
+                </a>
+
+                <a href="#section-projects" class="text-secondary text-decoration-none me-3">
+                    Projects
+                </a>
+
+                <a href="#section-github" class="text-secondary text-decoration-none">
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="data/cards.js"></script>
+
+    <script>
+
+        const cardRow = document.getElementById('card-row');
+        const githubRow = document.getElementById('github-row');
+        const username = 'anormalguyweird-glitch';
+
+        let githubRepos = [];
+
+
+        function showCards(projects) {
+
+            cardRow.innerHTML = '';
+
+            document.getElementById('project-count').textContent =
+                projects.length + ' Projects';
+
+            for (let i = 0; i < projects.length; i++) {
+
+                const card = projects[i];
+
+                cardRow.insertAdjacentHTML('beforeend', `
+                    <div class="col-12 col-md-6 col-lg-4">
+
+                        <div class="card h-100 border-secondary shadow-sm">
+
+                            <img src="${card.imageURL}"
+                                class="card-img-top"
+                                alt=""
+                                loading="lazy">
+
+                            <div class="card-body">
+
+                                <h5 class="card-title fw-bold">
+                                    ${card.title}
+                                </h5>
+
+                                <p class="card-text text-secondary">
+                                    ${card.description}
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                `);
+
+            }
+
+            if (projects.length === 0) {
+                cardRow.innerHTML = '<p class="text-secondary">No projects found.</p>';
+            }
+
         }
 
-        new Swiper('#photo-slider', {
+        showCards(cards);
+
+
+        async function loadGitHub() {
+
+            try {
+
+                githubRepos = [];
+                let page = 1;
+
+                while (true) {
+
+                    const response = await fetch(
+                        `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`
+                    );
+
+                    if (!response.ok) {
+                        throw new Error('GitHub API error');
+                    }
+
+                    const repos = await response.json();
+
+                    githubRepos.push(...repos);
+
+                    if (repos.length < 100) {
+                        break;
+                    }
+
+                    page++;
+
+                }
+
+                document.getElementById('repo-count').textContent =
+                    githubRepos.length;
+
+                document.getElementById('star-count').textContent =
+                    githubRepos.reduce((total, repo) => total + repo.stargazers_count, 0);
+
+                const languages = [...new Set(
+                    githubRepos.map(repo => repo.language).filter(Boolean)
+                )];
+
+                document.getElementById('language-count').textContent =
+                    languages.length;
+
+                const languageFilter = document.getElementById('language-filter');
+                const languageContainer = document.getElementById('github-languages');
+
+                languageFilter.innerHTML = '<option value="all">All Languages</option>';
+                languageContainer.innerHTML = '';
+
+                for (const language of languages) {
+
+                    const badge = document.createElement('span');
+                    badge.className = 'badge text-bg-dark border me-2 mb-2 p-2';
+                    badge.textContent = language;
+                    languageContainer.append(badge);
+
+                    const option = document.createElement('option');
+                    option.value = language;
+                    option.textContent = language;
+                    languageFilter.append(option);
+
+                }
+
+                filterGitHub();
+
+            } catch (error) {
+
+                githubRow.innerHTML = `
+                    <div class="col-12">
+                        <div class="alert alert-secondary">
+                            Unable to load GitHub repositories.
+                            <button class="btn btn-outline-light btn-sm ms-2"
+                                onclick="loadGitHub()">
+                                Retry
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+            }
+
+        }
+
+
+        function showGitHubCards(repos) {
+
+            githubRow.innerHTML = '';
+
+            for (const repo of repos) {
+
+                const column = document.createElement('div');
+
+                column.className = 'col-12 col-md-6 col-lg-4';
+
+                column.innerHTML = `
+                    <div class="card h-100 border-secondary shadow-sm">
+
+                        <img class="card-img-top" loading="lazy">
+
+                        <div class="card-body d-flex flex-column">
+
+                            <h5 class="card-title fw-bold"></h5>
+
+                            <p class="card-text text-secondary description"></p>
+
+                            <div class="mb-3">
+                                <span class="badge text-bg-dark border language"></span>
+                                <span class="badge text-bg-dark border stars"></span>
+                                <span class="badge text-bg-dark border forks"></span>
+                            </div>
+
+                            <p class="small text-secondary updated"></p>
+
+                            <div class="mt-auto d-flex flex-wrap gap-2">
+
+                                <a class="btn btn-outline-light btn-sm repository"
+                                    target="_blank"
+                                    rel="noopener noreferrer">
+
+                                    <i class="bi bi-github me-1"></i>
+                                    Repository
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                `;
+
+                const image = column.querySelector('img');
+
+                const customImage = githubScreenshots[repo.name];
+
+                const preview = `https://opengraph.githubassets.com/1/${username}/${encodeURIComponent(repo.name)}`;
+
+                image.src = customImage || preview;
+
+                image.alt = customImage
+                    ? repo.name + ' screenshot'
+                    : repo.name + ' repository preview';
+
+                image.onerror = function () {
+
+                    if (image.src !== preview) {
+                        image.src = preview;
+                        image.alt = repo.name + ' repository preview';
+                    } else {
+                        image.remove();
+                    }
+
+                };
+
+                column.querySelector('.card-title').textContent =
+                    repo.name.replace(/[-_]/g, ' ');
+
+                column.querySelector('.description').textContent =
+                    repo.description || 'A GitHub repository without a description.';
+
+                column.querySelector('.language').textContent =
+                    repo.language || 'Other';
+
+                column.querySelector('.stars').textContent =
+                    '★ ' + repo.stargazers_count;
+
+                column.querySelector('.forks').textContent =
+                    'Forks: ' + repo.forks_count;
+
+                column.querySelector('.updated').textContent =
+                    'Updated: ' + new Date(repo.updated_at).toLocaleDateString();
+
+                column.querySelector('.repository').href = repo.html_url;
+
+                if (repo.homepage) {
+
+                    try {
+
+                        const url = new URL(repo.homepage);
+
+                        if (url.protocol === 'https:' || url.protocol === 'http:') {
+
+                            const demo = document.createElement('a');
+
+                            demo.className = 'btn btn-light btn-sm';
+                            demo.href = url.href;
+                            demo.target = '_blank';
+                            demo.rel = 'noopener noreferrer';
+                            demo.textContent = 'Live Demo';
+
+                            column.querySelector('.repository')
+                                .parentElement.append(demo);
+
+                        }
+
+                    } catch {
+                    }
+
+                }
+
+                githubRow.append(column);
+
+            }
+
+            if (repos.length === 0) {
+                githubRow.innerHTML = '<p class="text-secondary">No repositories found.</p>';
+            }
+
+        }
+
+
+        function filterGitHub() {
+
+            const language = document.getElementById('language-filter').value;
+            const sort = document.getElementById('github-sort').value;
+
+            const search = document.getElementById('search-input')
+                .value.toLowerCase().trim();
+
+            const filtered = githubRepos.filter(repo => {
+
+                return (
+                    language === 'all' || repo.language === language
+                ) && (
+                    repo.name.toLowerCase().includes(search) ||
+                    (repo.description || '').toLowerCase().includes(search)
+                );
+
+            });
+
+            if (sort === 'stars') {
+
+                filtered.sort((a, b) => b.stargazers_count - a.stargazers_count);
+
+            } else if (sort === 'name') {
+
+                filtered.sort((a, b) => a.name.localeCompare(b.name));
+
+            } else {
+
+                filtered.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+            }
+
+            showGitHubCards(filtered);
+
+        }
+
+
+        document.getElementById('language-filter')
+            .addEventListener('change', filterGitHub);
+
+        document.getElementById('github-sort')
+            .addEventListener('change', filterGitHub);
+
+
+        document.getElementById('search-form').addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
+            const search = document.getElementById('search-input')
+                .value.toLowerCase().trim();
+
+            const filtered = cards.filter(card =>
+                card.title.toLowerCase().includes(search) ||
+                card.description.toLowerCase().includes(search)
+            );
+
+            showCards(filtered);
+            filterGitHub();
+
+            document.getElementById('section-projects').scrollIntoView();
+
+        });
+
+
+        const reducedMotion = window.matchMedia(
+            '(prefers-reduced-motion: reduce)'
+        ).matches;
+
+        const swiper = new Swiper('#photo-slider', {
+
             loop: true,
-            keyboard: { enabled: true },
+
+            speed: reducedMotion ? 0 : 800,
+
+            effect: 'fade',
+
+            fadeEffect: {
+                crossFade: true
+            },
+
+            autoplay: reducedMotion ? false : {
+                delay: 4000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            },
+
+            keyboard: {
+                enabled: true
+            },
+
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true
             },
+
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev'
             }
+
         });
+
+
+        const sliderToggle = document.getElementById('slider-toggle');
+
+        sliderToggle.hidden = reducedMotion;
+
+        sliderToggle.addEventListener('click', function () {
+
+            if (swiper.autoplay.running) {
+                swiper.autoplay.stop();
+                sliderToggle.textContent = 'Play';
+            } else {
+                swiper.autoplay.start();
+                sliderToggle.textContent = 'Pause';
+            }
+
+        });
+
+
+        loadGitHub();
+
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
